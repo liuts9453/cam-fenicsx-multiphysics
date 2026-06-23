@@ -53,11 +53,17 @@ The representative non-isothermal dogbone simulation is available at:
 python CMAME-D-26-01111/noniso_dogbone/shen_dog.py
 ```
 
-Archived CPU/GPU benchmark logs for the article runtime-scaling study are available in:
+## GPU Benchmark Logs
+
+The repository includes the CPU/GPU benchmark logs used for the article runtime-scaling study:
 
 ```text
 CMAME-D-26-01111/gpu_benchmark/
 ```
+
+The benchmark measures the end-to-end thermomechanical simulation runtime for cubic hexahedral meshes from `1^3` to `30^3`, with 50 loading steps on both CPU and GPU. The logs include the total wall-clock time and a runtime decomposition into first-call/JIT cost, JAX constitutive compute time, host/device communication, and remaining global assembly and solve time.
+
+The benchmark was run with `dolfinx 0.10.0` and JAX/CUDA on the workstation used for the article computations. The data are included to document the reported scaling behavior of the framework; they should be interpreted as benchmark records for this implementation and hardware configuration, not as hardware-independent performance claims.
 
 ## Material Implementations
 
