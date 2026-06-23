@@ -70,7 +70,7 @@ The benchmark was run on the workstation used for the article computations:
 ```text
 CPU: AMD Ryzen 5 5800X
 GPU: NVIDIA GeForce RTX 5070 Ti
-FEniCSx: 0.9.0
+dolfinx: 0.10.0
 JAX/CUDA: JAX with CUDA 13.2
 ```
 
