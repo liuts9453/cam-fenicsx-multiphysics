@@ -33,6 +33,12 @@ The simulations require a FEniCSx environment with the following Python packages
 
 The compact plotting utilities in `postprocessing/` additionally use `matplotlib`.
 
+## Framework Documentation
+
+- `Multiphysics/Materials/README.md`: material-interface guide for implementing new material classes.
+- `Multiphysics/Kernels/README.md`: weak-form kernel interface and current reusable kernels.
+- `CMAME-D-26-01111/INPUT_FILES.md`: article-specific input tables, mesh files, and generated-file exclusions.
+
 ## Article Examples
 
 Run the representative single-element thermomechanical PA6 example from the repository root:
