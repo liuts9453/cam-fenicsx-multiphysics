@@ -42,6 +42,16 @@ bench_cpu_30.log
 bench_gpu_30.log
 ```
 
+## Benchmark Code
+
+The scripts used to generate and postprocess these logs are archived in:
+
+```text
+CMAME-D-26-01111/gpu_benchmark/code/
+```
+
+The benchmark driver is `code/Felder_ele_bench.py`, the batch runner is `code/run_benchmark.py`, and the material implementation used by the benchmark is `code/TVPkinIFT_heat.py`.
+
 ## Recorded Quantities
 
 Each log contains the full simulation console output and a profiling block at the end. The profiling block reports:

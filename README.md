@@ -55,7 +55,7 @@ python CMAME-D-26-01111/noniso_dogbone/shen_dog.py
 
 ## GPU Benchmark Logs
 
-The repository includes the CPU/GPU benchmark logs used for the article runtime-scaling study:
+The repository includes the CPU/GPU benchmark logs and related benchmark code used for the article runtime-scaling study:
 
 ```text
 CMAME-D-26-01111/gpu_benchmark/
