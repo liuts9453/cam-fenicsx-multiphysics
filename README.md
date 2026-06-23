@@ -53,6 +53,12 @@ The representative non-isothermal dogbone simulation is available at:
 python CMAME-D-26-01111/noniso_dogbone/shen_dog.py
 ```
 
+Archived CPU/GPU benchmark logs for the article runtime-scaling study are available in:
+
+```text
+CMAME-D-26-01111/gpu_benchmark/
+```
+
 ## Material Implementations
 
 Concrete material laws are not implemented inside the base material classes. The base classes in `Multiphysics/Materials/` define the external-operator interface and shared mechanics for quadrature-point evaluation, history storage, and tangent assembly. Material-specific constitutive equations, history updates, flux vectors, and derivative registrations belong in concrete subclasses.

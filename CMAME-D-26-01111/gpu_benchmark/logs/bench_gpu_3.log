@@ -1,0 +1,217 @@
+{'E': Array([6610., 6398.,  901.], dtype=float64),
+ 'E2': Array([1210.,  903.,  103.], dtype=float64),
+ 'H': Array([473., 459., 150.], dtype=float64),
+ 'T': Array([ 23.,  50., 160.], dtype=float64),
+ 'alpha': Array([0.188, 0.525, 2.088], dtype=float64),
+ 'b': Array([26. ,  0.5,  0.1], dtype=float64),
+ 'beta': Array([1687.,  654.,  340.], dtype=float64),
+ 'c': Array([25., 18.,  1.], dtype=float64),
+ 'delta': Array([0.211, 0.295, 0.517], dtype=float64),
+ 'nu': Array([0.35, 0.4 , 0.48], dtype=float64),
+ 'phi': Array([0.8 , 2.  , 2.24], dtype=float64),
+ 'sigY1': Array([139. ,   1.2,   0.8], dtype=float64),
+ 'sigY2': Array([ 67.,  56., 234.], dtype=float64),
+ 'tau': Array([156.,  71.,  21.], dtype=float64)}
+Multiphysics-VI base on Dolfinx10
+[2026-04-21T03:39:52.928970] Simulation starts, output: result/bench_gpu_3.bp
+==== Simulation parameters ====
+[Material]
+{
+  "E": "<function <lambda> at 0x7e702d133600>",
+  "sigY1": "<function <lambda> at 0x7e702d1339c0>",
+  "sigY2": "<function <lambda> at 0x7e702d133ec0>",
+  "alpha": "<function <lambda> at 0x7e702d133880>",
+  "beta": "<function <lambda> at 0x7e702d133060>",
+  "H": "<function <lambda> at 0x7e702d133ce0>",
+  "E2": "<function <lambda> at 0x7e702d1337e0>",
+  "tau": "<function <lambda> at 0x7e702d133b00>",
+  "phi": "<function <lambda> at 0x7e702d133e20>",
+  "delta": "<function <lambda> at 0x7e702d133ba0>",
+  "c": "<function <lambda> at 0x7e702d133f60>",
+  "b": "<function <lambda> at 0x7e702d133c40>",
+  "lM": 2,
+  "nu": 0.35,
+  "chi": 0.23
+}
+[Kernels]
+[
+  {
+    "name": "TotalLagrangianStressDivergence",
+    "par": {}
+  },
+  {
+    "name": "HeatConduction",
+    "par": {
+      "temperature_old": "<dolfinx object>",
+      "thermal_conductivity": 0.27,
+      "unit": 0
+    }
+  }
+]
+================================
+[INFO] Wrote parameters sidecar: /home/liu/Desktop/Felderele/result/bench_gpu_3.bp/parameters.json
+[35mSTEP 1 Load[0m[35m BC[1]=>0.0036, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 25.4175 s)
+[35mSTEP 2 Load[0m[35m BC[1]=>0.0072, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1354 s)
+[35mSTEP 3 Load[0m[35m BC[1]=>0.0108, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1303 s)
+[35mSTEP 4 Load[0m[35m BC[1]=>0.0144, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1328 s)
+[35mSTEP 5 Load[0m[35m BC[1]=>0.018, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1291 s)
+[35mSTEP 6 Load[0m[35m BC[1]=>0.0216, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1359 s)
+[35mSTEP 7 Load[0m[35m BC[1]=>0.0252, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1313 s)
+[35mSTEP 8 Load[0m[35m BC[1]=>0.0288, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1306 s)
+[35mSTEP 9 Load[0m[35m BC[1]=>0.0324, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1309 s)
+[35mSTEP 10 Load[0m[35m BC[1]=>0.036, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1624 s)
+[35mSTEP 11 Load[0m[35m BC[1]=>0.0396, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1626 s)
+[35mSTEP 12 Load[0m[35m BC[1]=>0.0432, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1240 s)
+[35mSTEP 13 Load[0m[35m BC[1]=>0.0468, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1234 s)
+[35mSTEP 14 Load[0m[35m BC[1]=>0.0504, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1231 s)
+[35mSTEP 15 Load[0m[35m BC[1]=>0.054, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1532 s)
+[35mSTEP 16 Load[0m[35m BC[1]=>0.0576, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1522 s)
+[35mSTEP 17 Load[0m[35m BC[1]=>0.0612, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1529 s)
+[35mSTEP 18 Load[0m[35m BC[1]=>0.0648, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1521 s)
+[35mSTEP 19 Load[0m[35m BC[1]=>0.0684, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1544 s)
+[35mSTEP 20 Load[0m[35m BC[1]=>0.072, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1529 s)
+[35mSTEP 21 Load[0m[35m BC[1]=>0.0756, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1234 s)
+[35mSTEP 22 Load[0m[35m BC[1]=>0.0792, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1234 s)
+[35mSTEP 23 Load[0m[35m BC[1]=>0.0828, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1532 s)
+[35mSTEP 24 Load[0m[35m BC[1]=>0.0864, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1535 s)
+[35mSTEP 25 Load[0m[35m BC[1]=>0.09, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1506 s)
+[35mSTEP 26 Load[0m[35m BC[1]=>0.0936, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1528 s)
+[35mSTEP 27 Load[0m[35m BC[1]=>0.0972, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1444 s)
+[35mSTEP 28 Load[0m[35m BC[1]=>0.1008, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1439 s)
+[35mSTEP 29 Load[0m[35m BC[1]=>0.1044, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1431 s)
+[35mSTEP 30 Load[0m[35m BC[1]=>0.108, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1434 s)
+[35mSTEP 31 Load[0m[35m BC[1]=>0.1116, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1436 s)
+[35mSTEP 32 Load[0m[35m BC[1]=>0.1152, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1433 s)
+[35mSTEP 33 Load[0m[35m BC[1]=>0.1188, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1446 s)
+[35mSTEP 34 Load[0m[35m BC[1]=>0.1224, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1426 s)
+[35mSTEP 35 Load[0m[35m BC[1]=>0.126, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1420 s)
+[35mSTEP 36 Load[0m[35m BC[1]=>0.1296, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1422 s)
+[35mSTEP 37 Load[0m[35m BC[1]=>0.1332, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1431 s)
+[35mSTEP 38 Load[0m[35m BC[1]=>0.1368, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1430 s)
+[35mSTEP 39 Load[0m[35m BC[1]=>0.1404, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1425 s)
+[35mSTEP 40 Load[0m[35m BC[1]=>0.144, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1439 s)
+[35mSTEP 41 Load[0m[35m BC[1]=>0.1476, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 4 iterations. (Time: 0.1435 s)
+[35mSTEP 42 Load[0m[35m BC[1]=>0.1512, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1151 s)
+[35mSTEP 43 Load[0m[35m BC[1]=>0.1548, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1137 s)
+[35mSTEP 44 Load[0m[35m BC[1]=>0.1584, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1130 s)
+[35mSTEP 45 Load[0m[35m BC[1]=>0.162, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1126 s)
+[35mSTEP 46 Load[0m[35m BC[1]=>0.1656, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1141 s)
+[35mSTEP 47 Load[0m[35m BC[1]=>0.1692, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1125 s)
+[35mSTEP 48 Load[0m[35m BC[1]=>0.1728, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1126 s)
+[35mSTEP 49 Load[0m[35m BC[1]=>0.1764, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1139 s)
+[35mSTEP 50 Load[0m[35m BC[1]=>0.18, Δ=+0.0036[0m[35m (dt=0.617143, cut=0)[0m
+[INFO] Aux solve converged. (its=1, reason=3)
+      Nonlinear Solving [32mConverged[0m after 3 iterations. (Time: 0.1123 s)
+Total 50 steps, Time: 32.5870 s
+
+[Profiling] Platform: gpu, Mesh: 3^3
+[Profiling] JAX First Call (JIT Compilation + Init Compute): 12.7496 s
+[Profiling] JAX Pure Compute (Total without JIT): 2.2510 s
+[Profiling] JAX Pure Compute (Avg per call): 0.004980 s
+[Profiling] Communication H2D (Total): 0.0932 s | Avg: 0.000205 s
+[Profiling] Communication D2H (Total): 0.0488 s | Avg: 0.000108 s
+[Profiling] Total Communication (H2D + D2H): 0.1421 s
+[Profiling] Global Assembly & Solve (Total Approx): 17.4763 s
+WARNING! There are options you set that were not used!
+WARNING! could be spelling mistake, etc!
+There is one unused database option. It is:
+Option left: name:-mp_log_view (no value) source: code
+
