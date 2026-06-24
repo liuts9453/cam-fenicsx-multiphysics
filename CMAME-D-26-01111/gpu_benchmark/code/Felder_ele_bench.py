@@ -102,7 +102,7 @@ time = np.cumsum(np.asarray(time_steps))
 disps = time * eps_dot
 iso_thermo = False
 
-# 1. 定义一次性的 namedtuple「类型」
+# Define the material-parameter namedtuple type once.
 MaterialParameters = namedtuple(
     "MaterialParameters",
     [
@@ -124,7 +124,7 @@ MaterialParameters = namedtuple(
     ],
 )
 
-# 2. 在程序初始化阶段只实例化一次
+# Instantiate the material parameters once during initialization.
 material_parameters = MaterialParameters(
     E=lambda temp: E_interp.evaluate(temp) * chi,
     sigY1=lambda temp: chi * sigY1_interp.evaluate(temp),
@@ -195,28 +195,28 @@ constantInitialValue(T, init_temp)
 constantInitialValue(var_temperature, init_temp)
 
 # ================================================================
-#             PETSc Options 注入：AMG 预条件的 Krylov 求解器
+#             PETSc options: AMG-preconditioned Krylov solver
 # ================================================================
 amg_petsc_options = {
-    # 1. 非线性求解器 (SNES) 保持不变
+    # 1. Nonlinear solver (SNES): unchanged from the benchmark setup.
     "snes_type": "newtonls",
     "snes_linesearch_type": "basic", 
     "snes_atol": 1e-9,
     "snes_rtol": 1e-6,
     "snes_max_it": 15,
     
-    # 2. 线性求解器 (KSP) 使用 GMRES
+    # 2. Linear solver (KSP): GMRES.
     "ksp_type": "gmres",               
-    "ksp_rtol": 1e-4,                  # 线性步相对容差
-    "ksp_max_it": 500,                 # 允许较多的内部 Krylov 迭代
+    "ksp_rtol": 1e-4,                  # Relative tolerance for each linear solve
+    "ksp_max_it": 500,                 # Allow a larger number of inner Krylov iterations
     
-    # 3. 核心大杀器：使用代数多重网格 (GAMG) 作为预条件
+    # 3. Use algebraic multigrid (GAMG) as the preconditioner.
     "pc_type": "gamg",                 
-    "pc_gamg_type": "agg",             # 使用 Smoothed Aggregation
-    "pc_gamg_agg_nsmooths": 1,         # 聚合平滑次数
+    "pc_gamg_type": "agg",             # Smoothed aggregation
+    "pc_gamg_agg_nsmooths": 1,         # Number of aggregation smoothing sweeps
     
-    "log_view": "",                    # 启用 PETSc 日志
-    # 调试监控 (想看 KSP 迭代几次收敛，可以解开下方注释)
+    "log_view": "",                    # Enable PETSc logging
+    # Debug monitors. Uncomment to inspect SNES/KSP convergence histories.
     # "snes_monitor": "",
     # "ksp_monitor": "",               
 }
@@ -296,7 +296,7 @@ sim.initialize(
         (HistvarAtNode, {"index": 24, "field": "rv"}),
     ],  # Custom processor
     
-    # === 注入 AMG 预条件 Krylov 求解器配置 ===
+    # === Inject the AMG-preconditioned Krylov solver configuration ===
     petsc_options=amg_petsc_options,
 )
 

@@ -1,10 +1,10 @@
-# 异构计算性能瓶颈深度剖析 (最新日志数据 $1^3 \to 30^3$)
+# Heterogeneous-Computing Performance Bottleneck Analysis (latest logs, $1^3 \to 30^3$)
 
-这份数据用于回复 CMAME 审稿人关于“Crossover Point”以及“计算瓶颈（Local Newton, Matrix Exp, AD Overhead）”的质疑。所有数据均基于实际的长时仿真日志提取。
+These data were prepared to address CMAME reviewer questions about the crossover point and computational bottlenecks, including local Newton iterations, matrix exponentials, and automatic-differentiation overhead. All values were extracted from the full long-running benchmark logs.
 
-## 1. 性能剖析数据表
+## 1. Profiling Data Table
 
-| 网格规模 (Mesh) | 平台 | 总耗时<br>(Total Time) | **初始编译开销**<br>(1st Call/JIT) | **纯本构计算 (单步平均)**<br>(Pure Compute Avg) | **数据通信 (总)**<br>(Comm H2D+D2H) | **FEM装配与求解 (总)**<br>(Assembly & Solve) |
+| Mesh size | Platform | Total time | **First-call/JIT cost** | **Pure constitutive compute<br>(average per call)** | **Communication<br>(H2D+D2H total)** | **FEM assembly and solve<br>(total)** |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **1^3** | CPU | 15.01 s | 6.29 s | **0.0009 s** | 0.0673 s | 8.32 s |
 | **1^3** | **GPU** | 32.01 s | 12.82 s | **0.0031 s** | 0.1173 s | 17.86 s |
@@ -27,7 +27,6 @@
 | **30^3** | CPU | 12207.38 s | 41.66 s | **11.3012 s** | 21.9208 s | 6809.63 s |
 | **30^3** | **GPU** | 3258.90 s | 24.16 s | **2.7874 s** | 6.2744 s | 1912.82 s |
 
-*(注：各项存在极小的系统调用耗时截断，满足：总耗时 ≈ 初始编译开销 + 纯本构总耗时 + 通信总耗时 + 装配求解耗时)*
+*Note: small discrepancies can appear because of system-call timing and rounding. The intended decomposition is: total time is approximately first-call/JIT cost plus total pure constitutive compute time plus total communication time plus assembly/solve time.*
 
 ---
-
