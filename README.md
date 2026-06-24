@@ -105,14 +105,18 @@ is the reference material implementation for the implicit-function-theorem tange
 If you use this repository, the material implementation, or the benchmark data, please cite the accompanying CMAME article:
 
 ```bibtex
-@article{liu2026thermomechanically,
-  title = {Thermomechanically coupled visco-hyperelastic-plastic model with self-heating for thermoplastics},
-  author = {Liu, Tiansheng and Cui, Junhe and Kantert, Anna and Tabib, Majd and Kopic, Nadir and Valsecchi, Michele and Kumar, Sanat K. and Fish, Jacob and Simon, Jaan-Willem},
-  journal = {Computer Methods in Applied Mechanics and Engineering},
-  year = {2026},
-  pages = {119127},
-  doi = {10.1016/j.cma.2026.119127},
-  note = {In proof}
+@article{LIU2026119127,
+title = {Thermomechanically coupled visco–hyperelastic–plastic model with self-heating for thermoplastics},
+journal = {Computer Methods in Applied Mechanics and Engineering},
+volume = {461},
+pages = {119127},
+year = {2026},
+issn = {0045-7825},
+doi = {https://doi.org/10.1016/j.cma.2026.119127},
+url = {https://www.sciencedirect.com/science/article/pii/S0045782526004007},
+author = {Tiansheng Liu and Junhe Cui and Anna Kantert and Majd Tabib and Nadir Kopic and Michele Valsecchi and Sanat K. Kumar and Jacob Fish and Jaan-Willem Simon},
+keywords = {Thermomechanical coupling, Semi-crystalline thermoplastics, Finite-strain constitutive modeling, Visco–hyperelastic–plasticity, Self-heating, Two-potential formulation},
+abstract = {Thermoplastic polymers exhibit strongly coupled finite-strain behavior involving rate dependence, crystallinity-dependent mechanical resistance, thermal softening, and mechanically induced self-heating. This work presents a rotation-free finite-strain computational formulation for thermomechanically coupled visco–hyperelastic–plastic semi-crystalline thermoplastics. The formulation is built in a corotational intermediate configuration, where plastic, hardening, and viscoelastic updates are expressed through symmetric stretch variables. This casts the time-discrete local constitutive update as a rotation-free finite-dimensional nonlinear residual at each Gauss point, compatible with automatic differentiation of consistent stress and heat-source tangent blocks without branch-specific objective-rate linearizations. Processing-informed crystallinity is prescribed as a field that modulates stiffness, yield resistance, and hardening, while a reversible/irreversible heat-source decomposition separates thermoelastic, plastic, and viscous thermal contributions. The local map is batchable over integration points and is evaluated with JAX/XLA for GPU-vectorized Gauss-point computations within a monolithic finite element setting. Comparisons with PA6 tensile experiments show that the formulation reproduces the pre-peak mechanical response and the measured temperature evolution, including the transition from initial thermoelastic cooling to dissipative self-heating without empirical cooling terms. The post-peak localization regime is retained only as a structural demonstration of the local coupled formulation and is explicitly scoped as non-mesh-objective without additional regularization.}
 }
 ```
 
