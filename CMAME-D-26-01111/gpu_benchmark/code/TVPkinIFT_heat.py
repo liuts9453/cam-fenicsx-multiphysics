@@ -4,7 +4,7 @@ from typing import NamedTuple
 from Multiphysics.Materials import ExoMaterialIFT
 import jax.numpy as jnp
 import jax
-import jax.scipy as jsp  # 引入 jax.scipy 优化 GPU 小矩阵隐函数求解
+import jax.scipy as jsp  # Use jax.scipy to optimize GPU small-matrix IFT solves
 from fox.utils import (
     jax_nye_to_tensor as jaxn2t,
     jax_tensor_to_nye as jaxt2n,
@@ -181,9 +181,10 @@ class TVPkinIFT_heat(ExoMaterialIFT):
 
     def computeFunctionDerivatives(self):
         # -------------------------------------------------------------
-        # 仅为基类 ExoMaterial.localNewton 挂载所需的局部残差雅可比 (.j)
-        # 其余的自由能 (Psi)、屈服面 (Phi) 及通量 (flux) 等导数，
-        # 已通过底层的 jac_multi/grad_multi 实现图合并，无需再注册！
+        # Register only the local-residual Jacobians (.j) needed by
+        # ExoMaterial.localNewton. Other derivatives, including those of the
+        # free energy (Psi), yield function (Phi), and flux, are already fused
+        # through the lower-level jac_multi/grad_multi path.
         # -------------------------------------------------------------
         self.computeTangentMatrix(self.local_residual_elasto_plastic, 0)
         self.computeTangentMatrix(self.local_residual_visco_elastic, 0)
@@ -212,7 +213,8 @@ class TVPkinIFT_heat(ExoMaterialIFT):
         RCGe_trial = invUp_n @ RCG @ invUp_n
         bpe_trial = Up_n @ invUpi_n @ invUpi_n @ Up_n
 
-        # 图合并：一次性提取 trial state 下自由能对各个内部变量的偏导数
+        # Fused graph: extract free-energy derivatives with respect to all
+        # internal variables at the trial state in one pass.
         dpsidRCGe_trial, dpsidbpe_trial, R_trial = jax.grad(
             Psi_plas, argnums=(0, 1, 2)
         )(RCGe_trial, bpe_trial, kappa_n, u_T, par)
@@ -339,7 +341,8 @@ class TVPkinIFT_heat(ExoMaterialIFT):
         RCGep = invUp @ RCG @ invUp
         bpe = Up @ invUpi @ invUpi @ Up
 
-        # 图合并：一次性提取更新状态下自由能对各个内部变量的偏导数
+        # Fused graph: extract free-energy derivatives with respect to all
+        # internal variables at the updated state in one pass.
         dpsidRCGep, dpsidbpe, Rp = jax.grad(Psi_plas, argnums=(0, 1, 2))(
             RCGep, bpe, kappa, u_T, par
         )
@@ -428,7 +431,7 @@ class TVPkinIFT_heat(ExoMaterialIFT):
         dp = dlambda * jax.grad(Phi, argnums=0)(Sigma, Rp, u_T, par)
         Cpidot = 2.0 * dlambda * jax.grad(g_kin, argnums=0)(Theta, u_T, par)
 
-        # 随温度演化的热耗散计算
+        # Heat-dissipation calculation with temperature evolution.
         def thermo_funcs_plas(T):
             d0, d1, d2 = jax.grad(Psi_plas, argnums=(0, 1, 2))(
                 RCGep, bpe, kappa, T, par
@@ -593,7 +596,7 @@ class TVPkinIFT_heat(ExoMaterialIFT):
         L_current = hist[0:14]
         L_n = hist_n[0:14]
 
-        # 图合并与隐函数切线求解优化
+        # Fused graph and optimized implicit-function tangent solve.
         drdL, drddf = jax.jacfwd(
             TVPkinIFT_heat.local_residual_elasto_plastic, argnums=(0, 2)
         )(L_current, L_n, driving_force, par)

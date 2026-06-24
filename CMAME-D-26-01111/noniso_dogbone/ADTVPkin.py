@@ -97,18 +97,18 @@ class ADTVPkin(ExoMaterial):
     def computeQpFlux(self):
         self._FNS = self.computeFunctionDerivates(self.par)
 
-        # 一阶导数
+        # First derivatives
         dPsi_plas_dRCGe = self._FNS["dpsi_plas_dRCGe"]  # ∂Ψᵖˡᵃˢ/∂RCGe
         dPsi_plas_dbpe = self._FNS["dpsi_plas_dbpe"]  # ∂Ψᵖˡᵃˢ/∂bpe
         dPsi_plas_dkappa = self._FNS["dpsi_plas_dkappa"]  # ∂Ψᵖˡᵃˢ/∂κ
         dPsi_AB_dRCGe = self._FNS["dpsi_AB_dRCGe"]  # ∂Ψᴬᴮ/∂RCGe
 
-        # ──耗散势导数──────────────────────────────────────────────────
+        # Dissipation-potential derivatives
 
         dg_vis_dY = self._FNS["dg_vis_dY"]  # ∂gᵛᶦˢ/∂Y
         dgkindTheta = self._FNS["dg_kin_dTheta"]  # ∂gᵏᶦⁿ/∂Θ
 
-        # ──屈服函数及其导数────────────────────────────────────────────────
+        # Yield function and derivatives
         Phi = self._FNS["Phi"]  # Φ(Y,R,T)
         dPhidY = self._FNS["dPhi_dY"]  # ∂Φ/∂Y
         dPhidR = self._FNS["dPhi_dR"]  # ∂Φ/∂R
@@ -386,29 +386,29 @@ class ADTVPkin(ExoMaterial):
 
     @staticmethod
     def computeFunctionDerivates(pars):
-        # 绑定 pars
+        # Bind pars
         psi_plas_b = partial(psi_plas, pars=pars)
         psi_AB_b = partial(psi_AB, pars=pars)
         g_vis_b = partial(g_vis, pars=pars)
-        g_kin_b = partial(g_kin, pars=pars)  # ★ 新增
+        g_kin_b = partial(g_kin, pars=pars)  # Added
 
         Phi_b = partial(Phi, pars=pars)
 
         fns = {
-            # ——自由能及梯度——
+            # Free energy and gradients
             "psi_plas": psi_plas_b,
             "dpsi_plas_dRCGe": jax.jit(jax.grad(psi_plas_b, 0)),
             "dpsi_plas_dbpe": jax.jit(jax.grad(psi_plas_b, 1)),
             "dpsi_plas_dkappa": jax.jit(jax.grad(psi_plas_b, 2)),
             "psi_AB": psi_AB_b,
             "dpsi_AB_dRCGe": jax.grad(psi_AB_b, 0),
-            # ——粘弹耗散势——
+            # Viscoelastic dissipation potential
             "g_vis": g_vis_b,
             "dg_vis_dY": jax.jit(jax.grad(g_vis_b, 0)),
-            # ——动硬化耗散势——
+            # Kinematic-hardening dissipation potential
             "g_kin": g_kin_b,
             "dg_kin_dTheta": jax.jit(jax.grad(g_kin_b, 0)),
-            # ——屈服函数——
+            # Yield function
             "Phi": Phi_b,
             "dPhi_dY": jax.jit(jax.grad(Phi_b, 0)),
             "dPhi_dR": jax.jit(jax.grad(Phi_b, 1)),

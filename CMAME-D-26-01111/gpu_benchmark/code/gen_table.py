@@ -44,7 +44,7 @@ for f in files:
 
 data.sort(key=lambda x: (x["mesh"], x["platform"]))
 
-print("| 网格规模 (Mesh) | 平台 | 总耗时<br>(Total Time) | **初始编译开销**<br>(1st Call/JIT) | **纯本构计算 (单步平均)**<br>(Pure Compute Avg) | **数据通信 (总)**<br>(Comm H2D+D2H) | **FEM装配与求解 (总)**<br>(Assembly & Solve) |")
+print("| Mesh size | Platform | Total time | **First-call/JIT cost** | **Pure constitutive compute<br>(average per call)** | **Communication<br>(H2D+D2H total)** | **FEM assembly and solve<br>(total)** |")
 print("| :--- | :--- | :--- | :--- | :--- | :--- | :--- |")
 
 for row in data:
