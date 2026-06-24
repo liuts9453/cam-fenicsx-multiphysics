@@ -75,10 +75,10 @@ JAX platform selection is controlled before the material kernels are initialized
 import jax
 
 jax.config.update("jax_platform_name", "cpu")  # CPU backend
-jax.config.update("jax_platform_name", "gpu")  # CUDA GPU backend
+jax.config.update("jax_platform_name", "gpu")  # CUDA-capable GPU backend
 ```
 
-Only one platform should be selected in a run. The benchmark driver exposes the same switch through `--platform cpu` or `--platform gpu`, where JAX uses `"gpu"` for the CUDA backend.
+Only one platform should be selected in a run. The benchmark driver exposes the same switch through `--platform cpu` or `--platform gpu`. With CUDA-enabled `jaxlib`, the selected GPU device appears as a CUDA device such as `cuda:0`, even though the script-level JAX platform string is `"gpu"`.
 
 The benchmark was run with `dolfinx 0.10.0` and JAX/CUDA on the workstation used for the article computations. The data are included to document the reported scaling behavior of the framework; they should be interpreted as benchmark records for this implementation and hardware configuration, not as hardware-independent performance claims.
 
@@ -99,3 +99,9 @@ CMAME-D-26-01111/single_element/TVPkinIFT_heat.py
 ```
 
 is the reference material implementation for the implicit-function-theorem tangent path used by the single-element example.
+
+## License
+
+This repository is released under the MIT License; see `LICENSE`.
+
+If you use this package, the article-specific material implementation, or the benchmark data in academic work, please cite the accompanying CMAME article listed at the top of this README.

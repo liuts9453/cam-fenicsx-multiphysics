@@ -83,10 +83,10 @@ For a fixed script without command-line parsing, the equivalent explicit choices
 
 ```python
 jax.config.update("jax_platform_name", "cpu")  # CPU backend
-jax.config.update("jax_platform_name", "gpu")  # CUDA GPU backend
+jax.config.update("jax_platform_name", "gpu")  # CUDA-capable GPU backend
 ```
 
-Use one setting per run, and set it before creating JAX arrays, JIT-compiled functions, or material objects. JAX uses the platform name `"gpu"` for CUDA-enabled `jaxlib`.
+Use one setting per run, and set it before creating JAX arrays, JIT-compiled functions, or material objects. With CUDA-enabled `jaxlib`, the selected GPU device appears as a CUDA device such as `cuda:0`, even though the script-level JAX platform string is `"gpu"`.
 
 ## Hardware and Software Context
 

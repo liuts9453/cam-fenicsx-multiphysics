@@ -44,6 +44,6 @@ jax.config.update("jax_platform_name", "cpu")
 jax.config.update("jax_platform_name", "gpu")
 ```
 
-The `"gpu"` platform is the CUDA backend when the installed `jaxlib` has CUDA support. Set the platform before creating JAX arrays, JIT functions, or material instances.
+With CUDA-enabled `jaxlib`, `"gpu"` selects the CUDA-capable GPU backend and arrays are placed on a CUDA device such as `cuda:0`. Set the platform before creating JAX arrays, JIT functions, or material instances.
 
 Generated ADIOS `.bp` outputs are intentionally not included in this repository.
