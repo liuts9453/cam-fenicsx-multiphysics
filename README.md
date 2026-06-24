@@ -100,8 +100,24 @@ CMAME-D-26-01111/single_element/TVPkinIFT_heat.py
 
 is the reference material implementation for the implicit-function-theorem tangent path used by the single-element example.
 
+## Citation
+
+If you use this repository, the material implementation, or the benchmark data, please cite the accompanying CMAME article:
+
+```bibtex
+@article{liu2026thermomechanically,
+  title = {Thermomechanically coupled visco-hyperelastic-plastic model with self-heating for thermoplastics},
+  author = {Liu, Tiansheng and Cui, Junhe and Kantert, Anna and Tabib, Majd and Kopic, Nadir and Valsecchi, Michele and Kumar, Sanat K. and Fish, Jacob and Simon, Jaan-Willem},
+  journal = {Computer Methods in Applied Mechanics and Engineering},
+  year = {2026},
+  pages = {119127},
+  doi = {10.1016/j.cma.2026.119127},
+  note = {In proof}
+}
+```
+
+A standalone BibTeX entry is also provided in `CITATION.bib`.
+
 ## License
 
 This repository is released under the MIT License; see `LICENSE`.
-
-If you use this package, the article-specific material implementation, or the benchmark data in academic work, please cite the accompanying CMAME article listed at the top of this README.
