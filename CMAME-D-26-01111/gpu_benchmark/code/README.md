@@ -5,7 +5,7 @@ This directory archives the scripts used to generate the CPU/GPU benchmark logs 
 ## Files
 
 - `run_benchmark.py`: batch runner for the benchmark matrix. It loops over mesh sizes and platforms, then launches `Felder_ele_bench.py`.
-- `Felder_ele_bench.py`: benchmark simulation driver. It builds the thermomechanical single-element mesh family, runs 50 loading steps, and monkey-patches material flux/tangent evaluation to time host-to-device transfer, JAX compute, device-to-host transfer, and remaining FEM runtime.
+- `Felder_ele_bench.py`: benchmark simulation driver. It builds the thermomechanical single-element mesh family, runs 50 loading steps, and times flux-side host-to-device transfer, JAX constitutive compute, device-to-host transfer, and remaining FEM runtime.
 - `TVPkinIFT_heat.py`: material implementation used by the benchmark driver. It uses the IFT tangent-construction path.
 - `PA6_tvp.csv`: parameter table used by the benchmark material.
 - `gen_table.py`: extracts the profiling block from `../logs/bench_*.log` and prints a Markdown summary table.
@@ -28,5 +28,22 @@ python run_benchmark.py
 ```
 
 The benchmark was run with `dolfinx 0.10.0`, JAX with CUDA support, and `JAX_PLATFORM_NAME` set to the selected platform.
+
+Inside `Felder_ele_bench.py`, the selected backend is applied with:
+
+```python
+import jax
+
+jax.config.update("jax_platform_name", args.platform)
+```
+
+For standalone scripts, use one of:
+
+```python
+jax.config.update("jax_platform_name", "cpu")
+jax.config.update("jax_platform_name", "gpu")
+```
+
+The `"gpu"` platform is the CUDA backend when the installed `jaxlib` has CUDA support. Set the platform before creating JAX arrays, JIT functions, or material instances.
 
 Generated ADIOS `.bp` outputs are intentionally not included in this repository.

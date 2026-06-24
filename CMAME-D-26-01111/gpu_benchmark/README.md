@@ -71,7 +71,22 @@ The benchmark driver used the command pattern:
 conda run -n dof10 python Felder_ele_bench.py --mesh_size <N> --platform <cpu|gpu> --steps 50
 ```
 
-with `JAX_PLATFORM_NAME` set to the selected platform.
+The driver maps `--platform cpu` and `--platform gpu` to JAX with:
+
+```python
+import jax
+
+jax.config.update("jax_platform_name", args.platform)
+```
+
+For a fixed script without command-line parsing, the equivalent explicit choices are:
+
+```python
+jax.config.update("jax_platform_name", "cpu")  # CPU backend
+jax.config.update("jax_platform_name", "gpu")  # CUDA GPU backend
+```
+
+Use one setting per run, and set it before creating JAX arrays, JIT-compiled functions, or material objects. JAX uses the platform name `"gpu"` for CUDA-enabled `jaxlib`.
 
 ## Hardware and Software Context
 

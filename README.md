@@ -69,6 +69,17 @@ CMAME-D-26-01111/gpu_benchmark/
 
 The benchmark measures the end-to-end thermomechanical simulation runtime for cubic hexahedral meshes from `1^3` to `30^3`, with 50 loading steps on both CPU and GPU. The logs include the total wall-clock time and a runtime decomposition into first-call/JIT cost, JAX constitutive compute time, host/device communication, and remaining global assembly and solve time.
 
+JAX platform selection is controlled before the material kernels are initialized. In a script, use:
+
+```python
+import jax
+
+jax.config.update("jax_platform_name", "cpu")  # CPU backend
+jax.config.update("jax_platform_name", "gpu")  # CUDA GPU backend
+```
+
+Only one platform should be selected in a run. The benchmark driver exposes the same switch through `--platform cpu` or `--platform gpu`, where JAX uses `"gpu"` for the CUDA backend.
+
 The benchmark was run with `dolfinx 0.10.0` and JAX/CUDA on the workstation used for the article computations. The data are included to document the reported scaling behavior of the framework; they should be interpreted as benchmark records for this implementation and hardware configuration, not as hardware-independent performance claims.
 
 ## Material Implementations
