@@ -4,7 +4,7 @@ This repository is the official CAM-FEniCSx-Multiphysics package accompanying th
 
 **Thermomechanically Coupled Visco-Hyperelastic-Plastic Model with Self-Heating for Thermoplastics**
 *Computer Methods in Applied Mechanics and Engineering*, 2026.
-
+https://www.sciencedirect.com/science/article/pii/S0045782526004007
 The package combines reusable FEniCSx/JAX multiphysics components with the article-specific material implementations and representative simulations.
 
 ## Repository Structure
